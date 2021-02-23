@@ -27,4 +27,10 @@ class PageController extends Controller
         return view('spa.categories');
     }
 
+    public function tags()
+    {
+        return view('spa.tags');
+    }
+
+
 }
