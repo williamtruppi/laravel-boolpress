@@ -2,15 +2,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card" v-for="post in posts">
-                    <div class="card-header">{{post.title}}</div>
+                <div class="card" v-for="category in categories">
+                    <div class="card-header">{{category.name}}</div>
 
                     <div class="card-body">
-                        {{post.body}}
+                        {{category.description}}
                     </div>
 
                     <div class="card-footer">
-                        <span> Created at: {{new Date(post.created_at).toLocaleString("IT")}}</span>
+                        <span> Created at: {{new Date(category.created_at).toLocaleString("IT")}}</span>
                     </div>
                 </div>
             </div>
@@ -23,15 +23,15 @@
 
        data() {
             return {
-                posts: "",
+                categories: "",
             }
         },
 
         mounted() {
             console.log('Component mounted.');
-            axios.get("api/posts").then(response => {
+            axios.get("api/categories").then(response => {
                 console.log(response.data.data);
-                this.posts = response.data.data;
+                this.categories = response.data.data;
             }).catch(error => {
                 console.log(error);
             })

@@ -1978,16 +1978,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      posts: ""
+      categories: ""
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     console.log('Component mounted.');
-    axios.get("api/posts").then(function (response) {
+    axios.get("api/categories").then(function (response) {
       console.log(response.data.data);
-      _this.posts = response.data.data;
+      _this.categories = response.data.data;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -38382,16 +38382,16 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-md-8" },
-        _vm._l(_vm.posts, function(post) {
+        _vm._l(_vm.categories, function(category) {
           return _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v(_vm._s(post.title))
+              _vm._v(_vm._s(category.name))
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
                 "\n                    " +
-                  _vm._s(post.body) +
+                  _vm._s(category.description) +
                   "\n                "
               )
             ]),
@@ -38400,7 +38400,7 @@ var render = function() {
               _c("span", [
                 _vm._v(
                   " Created at: " +
-                    _vm._s(new Date(post.created_at).toLocaleString("IT"))
+                    _vm._s(new Date(category.created_at).toLocaleString("IT"))
                 )
               ])
             ])
