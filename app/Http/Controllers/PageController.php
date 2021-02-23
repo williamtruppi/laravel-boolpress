@@ -17,9 +17,8 @@ class PageController extends Controller
         return view('about');
     }
 
-    /* public function posts()
+    public function posts_api()
     {
-        $posts = Post::all();
-        return view('posts.index', compact("posts"));
-    } */
+        return view('spa.posts');
+    }
 }
