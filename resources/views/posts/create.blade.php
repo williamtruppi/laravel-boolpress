@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
+@extends("layouts.app")
+@section("name")
+    POSTS - BOOLPRESS
+@endsection
+@section("content")
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -18,6 +13,7 @@
             </ul>
         </div>
     @endif
+
     <h1>Create post</h1>
     <form action="{{route('posts.store')}}" method="post">
         @csrf
@@ -36,7 +32,6 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <button type="submit" class="btn btn-primary">Submit</button>
-
     </form>
-</body>
-</html>
+@endsection
+    
