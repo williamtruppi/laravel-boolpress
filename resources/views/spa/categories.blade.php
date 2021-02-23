@@ -1,12 +1,12 @@
 @extends("layouts.app")
 @section("name")
-    POSTS - API
+    CATEGORIES - API
 @endsection
 @section("content")
-    <h1 class="text-center">All posts from the API</h1>
+    <h1 class="text-center">All CATEGORIES from the API</h1>
 
     <div id="app">
-        <posts-component></posts-component>
+        <categories-component></categories-component>
     </div>
 @endsection
 @section("js_link")

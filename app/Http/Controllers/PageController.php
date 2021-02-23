@@ -21,4 +21,10 @@ class PageController extends Controller
     {
         return view('spa.posts');
     }
+
+    public function categories()
+    {
+        return view('spa.categories');
+    }
+
 }
