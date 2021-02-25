@@ -39,3 +39,10 @@ Route::get("tags", function () {
         "data" => App\Tag::all(),
     ], 200);
 });
+
+Route::get("articles", function () {
+    return response()->json([
+        "success" => true,
+        "data" => App\Article::all(),
+    ], 200);
+});
