@@ -24,7 +24,7 @@
         <tr>
             <td>{{$post->id}}</td>
             <td> {{$post->title}}</td>
-            <td> {{$post->category->name}}</td>
+            <td> {{$post->category ? $post->category->name : "no category"}}</td>
             <td>{{$post->body}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>
