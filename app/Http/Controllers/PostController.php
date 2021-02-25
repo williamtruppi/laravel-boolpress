@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class PostController extends Controller
 {
@@ -25,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact("categories"));
     }
 
     /**
@@ -41,13 +44,15 @@ class PostController extends Controller
         $validateData = $request->validate([
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
+            'category_id' => 'required|exists:categories,id'
         ]);
-
+    
         Post::create($validateData);
 
         /* SECONDO METODO */
 
         //$post = new Post(); // --> dichiaro una nuova istanza dell'oggetto Post
+        //$post->category_id = request("category_id");
         //$post->title = request("title"); // inserisco il titolo nella variabile
         //$post->body = request("body"); // inserisco il body nella variabile
         //$post->save(); // --> salvo il nuovo post

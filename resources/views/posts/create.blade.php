@@ -17,6 +17,7 @@
     <h1>Create post</h1>
     <form action="{{route('posts.store')}}" method="post">
         @csrf
+
         <div class="form-group">
             <label for="title">Title</label>
             <input class="form-control" type="text" name="title" id="title" value="{{old('title')}}">
@@ -24,6 +25,7 @@
         @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
         <div class="form-group">
             <label for="body">Body</label>
             <textarea class="form-control" name="body" id="body" rows="3">{{old('body')}}</textarea>
@@ -31,6 +33,19 @@
         @error('body')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
+        <span>Choose a category</span>
+        <select name="category_id" id="category_id">
+            <option value="" selected disabled hidden>Choose here</option>
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection
