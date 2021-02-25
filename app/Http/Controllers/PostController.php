@@ -79,7 +79,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("posts.edit", compact("post"));
+        $categories = Category::all();
+        return view("posts.edit", compact("post", "categories"));
     }
 
     /**
@@ -92,9 +93,11 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validateData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|max:255',
             'body' => 'required',
+            'category_id' => 'required|exists:categories,id'
         ]);
+
         $post->update($validateData);
         //$post->update($request->all());
         return redirect()->route('posts.index');
