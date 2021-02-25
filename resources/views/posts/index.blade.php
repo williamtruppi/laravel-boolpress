@@ -11,6 +11,7 @@
         <tr>
             <th>id</th>
             <th>title</th>
+            <th>category</th>
             <th>body</th>
             <th>create at</th>
             <th>updated at</th>
@@ -23,6 +24,7 @@
         <tr>
             <td>{{$post->id}}</td>
             <td> {{$post->title}}</td>
+            <td> {{$post->category->name}}</td>
             <td>{{$post->body}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>
