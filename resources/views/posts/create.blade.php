@@ -46,6 +46,17 @@
         @enderror
 
         <br>
+        <span>Choose tags: </span>
+        <div class="form-group">
+          <label for="tag_id"></label>
+          <select class="form-control" name="tag_id" id="tag_id" multiple>
+                @foreach ($tags as $tag)
+                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                @endforeach
+          </select>
+        </div>
+
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection

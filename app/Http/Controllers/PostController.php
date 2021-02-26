@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create', compact("categories"));
+        $tags = Tag::all();
+        return view('posts.create', compact("categories", "tags"));
     }
 
     /**
