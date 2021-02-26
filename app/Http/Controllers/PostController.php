@@ -6,6 +6,8 @@ use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -93,7 +95,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validateData = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts',
             'body' => 'required',
             'category_id' => 'required|exists:categories,id'
         ]);
