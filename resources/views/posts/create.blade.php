@@ -48,8 +48,8 @@
         <br>
         <span>Choose tags: </span>
         <div class="form-group">
-          <label for="tag_id"></label>
-          <select class="form-control" name="tag_id" id="tag_id" multiple>
+          <label for="tags"></label>
+          <select class="form-control" name="tags[]" id="tags" multiple>
                 @foreach ($tags as $tag)
                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                 @endforeach

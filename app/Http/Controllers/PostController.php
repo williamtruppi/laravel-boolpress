@@ -44,14 +44,16 @@ class PostController extends Controller
     public function store(Request $request)
     {   
         /* PRIMO METODO */
-
         $validateData = $request->validate([
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'tag_id' => 'exists:tags,id'
         ]);
-    
+        
         Post::create($validateData);
+
+        $new_post = Post::orderBy("id", "desc")->first();
 
         /* SECONDO METODO */
 
@@ -61,7 +63,8 @@ class PostController extends Controller
         //$post->body = request("body"); // inserisco il body nella variabile
         //$post->save(); // --> salvo il nuovo post
 
-        return redirect()->route("posts.index");
+        $new_post->tags()->attach($request->tags);
+        return redirect()->route("posts.index", $new_post);
     }
 
     /**
