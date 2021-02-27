@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -36,7 +36,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'description' => 'required'
+        ]);
+        
+        Category::create($validateData);
+
+        $new_cat = Category::orderBy("id", "desc")->first();
+
+        return redirect()->route("categories.index", $new_cat);
+
     }
 
     /**

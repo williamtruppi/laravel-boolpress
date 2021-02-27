@@ -4,7 +4,7 @@
 @endsection
 @section("content")
     <h1>Boolean Categories</h1>
-    <a href="{{route('categories.create')}}">create a new post</a>
+    <a href="{{route('categories.create')}}" class="btn btn-primary">create a new category</a>
     <section class="categories_list">
     <table class="table">
     <thead>
