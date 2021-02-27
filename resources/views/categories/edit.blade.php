@@ -15,9 +15,10 @@
     @endif
 
     <h1>Create post</h1>
-    <form action="{{route('categories.store')}}" method="post">
+    <form action="{{route('categories.update', ['category'=> $category->id])}}" method="post">
         @csrf
 
+        @method("PUT") <!-- passiamo PUT poichè il metodo più indicato per EDIT -->
         <div class="form-group">
             <label for="name">Name</label>
             <input class="form-control" type="text" name="name" id="name" value="{{$category->name}}">

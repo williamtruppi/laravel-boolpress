@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|unique:categories|max:255',
+            'name' => 'required|max:255',
             'description' => 'required'
         ]);
         
@@ -80,7 +80,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required'
+        ]);
+        
+        $category->update($validateData);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -91,6 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }
