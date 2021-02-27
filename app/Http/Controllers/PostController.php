@@ -48,7 +48,7 @@ class PostController extends Controller
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'tag_id' => 'exists:tags,id'
+            'tags' => 'exists:tags,id'
         ]);
         
         Post::create($validateData);
@@ -87,7 +87,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view("posts.edit", compact("post", "categories"));
+        $tags = Tag::all();
+        return view('posts.edit', compact("post", "categories", "tags"));
     }
 
     /**
@@ -100,12 +101,14 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validateData = $request->validate([
-            'title' => 'required|max:255|unique:posts',
+            'title' => 'required|max:255',
             'body' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'exists:tags,id'
         ]);
 
         $post->update($validateData);
+        $post->tags()->sync($request->tags);
         //$post->update($request->all());
         return redirect()->route('posts.index');
     }

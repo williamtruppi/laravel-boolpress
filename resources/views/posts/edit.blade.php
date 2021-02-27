@@ -48,6 +48,17 @@
         @enderror
 
         <br>
+        <span>Choose tags: </span>
+        <div class="form-group">
+          <label for="tags"></label>
+          <select class="form-control" name="tags[]" id="tags" multiple>
+                @foreach ($tags as $tag)
+                    <option value="{{$tag->id}}" {{$post->tags->contains($tag) ? 'selected' : ''}}>{{$tag->name}}</option>
+                @endforeach
+          </select>
+        </div>
+
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>

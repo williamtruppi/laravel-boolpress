@@ -55,6 +55,9 @@
                 @endforeach
           </select>
         </div>
+        @error('tags')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
