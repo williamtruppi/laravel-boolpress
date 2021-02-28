@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <h1>Create post</h1>
+    <h1>Create tag</h1>
     <form action="{{route('tags.store')}}" method="post">
         @csrf
 

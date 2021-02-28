@@ -36,7 +36,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required'
+        ]);
+        
+        Tag::create($validateData);
+
+        $new_tag = Tag::orderBy("id", "desc")->first();
+
+        return redirect()->route("tags.index", $new_tag);
     }
 
     /**
