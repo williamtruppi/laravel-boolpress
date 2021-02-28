@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view("posts.index", compact("posts"));
     }
 
@@ -101,11 +101,18 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validateData = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:posts',
             'body' => 'required',
             'category_id' => 'required|exists:categories,id',
             'tags' => 'exists:tags,id'
         ]);
+
+        /* Validator::make($validateData, [
+            'title' => ['required', 'max:255', Rule::unique('users')->ignore($post->id),
+            ],
+        ]); */
+
+        
 
         $post->update($validateData);
         $post->tags()->sync($request->tags);

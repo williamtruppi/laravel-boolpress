@@ -37,7 +37,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:tags,name',
             'description' => 'required'
         ]);
         
@@ -80,7 +80,7 @@ class TagController extends Controller
     public function update(Request $request, Tag $tag)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:tags,name,$tag->id',
             'description' => 'required'
         ]);
         
