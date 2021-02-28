@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("name")
-    tags - BOOLPRESS
+    TAGS - BOOLPRESS
 @endsection
 @section("content")
     <h1>Boolean Categories</h1>
