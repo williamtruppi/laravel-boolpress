@@ -8,6 +8,7 @@
                     <a href="{{route('home')}}">Home</a>
                     <a href="{{route('posts.index')}}">posts</a>
                     <a href="{{route('categories.index')}}">categories</a>
+                    <a href="{{route('tags.index')}}">tags</a>
                     <a href="{{route('about')}}">About</a>
                 </div>
             </div>

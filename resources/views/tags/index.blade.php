@@ -1,11 +1,11 @@
 @extends("layouts.app")
 @section("name")
-    CATEGORIES - BOOLPRESS
+    tags - BOOLPRESS
 @endsection
 @section("content")
     <h1>Boolean Categories</h1>
-    <a href="{{route('categories.create')}}" class="btn btn-primary">create a new category</a>
-    <section class="categories_list">
+    <a href="{{route('tags.create')}}" class="btn btn-primary">create a new category</a>
+    <section class="tags_list">
     <table class="table">
     <thead>
         <tr>
@@ -18,23 +18,23 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($categories as $cat)
+        @foreach($tags as $tag)
         <tr>
-            <td>{{$cat->id}}</td>
-            <td> {{$cat->name}}</td>
-            <td>{{$cat->description}}</td>
-            <td>{{$cat->created_at}}</td>
-            <td>{{$cat->updated_at}}</td>
+            <td>{{$tag->id}}</td>
+            <td> {{$tag->name}}</td>
+            <td>{{$tag->description}}</td>
+            <td>{{$tag->created_at}}</td>
+            <td>{{$tag->updated_at}}</td>
 
             <td>
-                <a href="{{route('categories.show', ['category'=> $cat->id] )}}" class="btn btn-primary">
+                <a href="{{route('tags.show', ['tag'=> $tag->id] )}}" class="btn btn-primary">
                     <i class="fas fa-eye fa-lg fa-fw"></i> View
                 </a>
-                <a href="{{route('categories.edit', ['category' => $cat->id])}}" class="btn btn-warning">
+                <a href="{{route('tags.edit', ['tag' => $tag->id])}}" class="btn btn-warning">
                     <i class="fas fa-pen fa-lg fa-fw"></i> Edit
                 </a>
 
-                <form action="{{route('categories.destroy', ['category'=> $cat->id]) }}" method="post">
+                <form action="{{route('tags.destroy', ['tag'=> $tag->id]) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="DELETE" class="btn btn-danger">
